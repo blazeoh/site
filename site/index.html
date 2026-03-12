@@ -8,14 +8,16 @@
   </head>
   <body>
     <div id="login-screen" class="login-screen">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="text" id="username" placeholder="Enter username" required />
-        <div style="display: flex; gap: 0.5rem;">
-          <button type="submit">Login</button>
-          <button type="button" id="signup-btn">Sign Up</button>
-        </div>
-      </form>
+      <div class="login-card">
+        <h2>Welcome to Unemployed Final Boss</h2>
+        <form id="login-form">
+          <input type="text" id="username" placeholder="Username" required />
+          <div class="login-btn-row">
+            <button type="submit" class="login-btn">Login</button>
+            <button type="button" id="signup-btn" class="signup-btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
     <header>
       <nav>
@@ -26,28 +28,23 @@
     </header>
 
     <main>
-      <section>
-        <h2>Welcome</h2>
-        <p>This is where your content goes. Replace this with your own writing and ideas.</p>
+      <section class="hero">
+        <h2>Unemployed Final Boss</h2>
+        <p>Press the button to find your next job adventure!</p>
+        <button id="find-job-btn" class="pulse">Find a Job</button>
       </section>
 
-      <!-- Add more sections as needed -->
-      <section id="unemployed-final-boss">
-        <h2>Unemployed Final Boss</h2>
-        <button id="find-job-btn">Find a Job</button>
+      <section id="job-results-section">
+        <h3>Job Results</h3>
         <div id="job-results"></div>
       </section>
+
 
       <section id="api-info">
         <h2>About & API Info</h2>
         <p>This site uses the <a href="https://arbeitnow.com/api/job-board-api" target="_blank">Arbeitnow Job Board API</a> to fetch real job listings. Click the button above to see jobs!</p>
         <p>Built for the <strong>Hot</strong> level: Interactive Data-Driven Site.</p>
       </section>
-        <section id="unemployed-final-boss">
-          <h2>Unemployed Final Boss</h2>
-          <button id="find-job-btn">Find a Job</button>
-          <div id="job-results"></div>
-        </section>
     </main>
 
     <footer>
