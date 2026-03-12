@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="login-screen" class="login-screen">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Enter username" required />
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="submit">Login</button>
+          <button type="button" id="signup-btn">Sign Up</button>
+        </div>
+      </form>
+    </div>
     <header>
       <nav>
         <a href="index.html">Home</a>
@@ -22,6 +32,22 @@
       </section>
 
       <!-- Add more sections as needed -->
+      <section id="unemployed-final-boss">
+        <h2>Unemployed Final Boss</h2>
+        <button id="find-job-btn">Find a Job</button>
+        <div id="job-results"></div>
+      </section>
+
+      <section id="api-info">
+        <h2>About & API Info</h2>
+        <p>This site uses the <a href="https://arbeitnow.com/api/job-board-api" target="_blank">Arbeitnow Job Board API</a> to fetch real job listings. Click the button above to see jobs!</p>
+        <p>Built for the <strong>Hot</strong> level: Interactive Data-Driven Site.</p>
+      </section>
+        <section id="unemployed-final-boss">
+          <h2>Unemployed Final Boss</h2>
+          <button id="find-job-btn">Find a Job</button>
+          <div id="job-results"></div>
+        </section>
     </main>
 
     <footer>
