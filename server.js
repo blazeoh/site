@@ -9,6 +9,13 @@ const db = new sqlite3.Database('site.db');
 // Initialize tables
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, banned INTEGER DEFAULT 0)');
+  db.run('CREATE TABLE IF NOT EXISTS activity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type TEXT NOT NULL,
+    username TEXT,
+    details TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )');
 });
 
 // Get all users
@@ -69,6 +76,10 @@ app.post('/api/signup', (req, res) => {
     db.get('SELECT username, banned FROM users WHERE username = ?', [username], (err, row) => {
       if (err) return res.status(500).json({ error: 'DB error' });
       if (!row) return res.status(409).json({ error: 'Username already exists' });
+      // Log activity
+      db.run('INSERT INTO activity (type, username, details) VALUES (?, ?, ?)', [
+        'signup', username, JSON.stringify({})
+      ]);
       res.json({ success: true, user: { username: row.username, banned: !!row.banned } });
     });
   });
@@ -111,7 +122,7 @@ app.get('/api/jobs', async (req, res) => {
 });
 app.post('/api/accept-job', (req, res) => {
   const job = req.body;
-  if (!job || !job.title) {
+  if (!job || !job.title || !job.username) {
     return res.status(400).json({ error: 'Invalid job data' });
   }
   let jobs = [];
@@ -120,7 +131,18 @@ app.post('/api/accept-job', (req, res) => {
   }
   jobs.push(job);
   fs.writeFileSync(jobsFile, JSON.stringify(jobs, null, 2));
+  // Log activity
+  db.run('INSERT INTO activity (type, username, details) VALUES (?, ?, ?)', [
+    'accept-job', job.username, JSON.stringify(job)
+  ]);
   res.json({ success: true });
+});
+// Admin: Get activity log
+app.get('/api/activity', (req, res) => {
+  db.all('SELECT * FROM activity ORDER BY created_at DESC LIMIT 100', [], (err, rows) => {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    res.json(rows);
+  });
 });
 
 // Get all accepted jobs

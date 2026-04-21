@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
               currentUser = username;
               loginScreen.style.display = 'none';
               document.body.classList.add('logged-in');
-              alert('Signed up as: ' + username);
+              // Redirect to startup page for personal info
+              window.location.href = 'startup.html';
             } else {
               alert(data.error || 'Sign up failed.');
             }
@@ -82,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     }
-    
-  console.log('Page loaded.');
+  
+    console.log('Page loaded.');
 
   // -------------------------------------------------------
   // Example: Select an element and update it
