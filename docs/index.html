@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>son u need a job im crine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="login-screen">
+      <div class="login-card">
+        <h2>Welcome to Unemployed Final Boss</h2>
+        <form id="login-form">
+          <input type="text" id="username" placeholder="Username" required />
+          <div style="position: relative;">
+            <input type="password" id="password" placeholder="Password" required style="width: 100%; padding-right: 40px;" />
+            <span id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+              <svg id="eye-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+          </div>
+          <p id="login-error-msg" style="color: red; display: none; margin-top: 10px; text-align: center;"></p>
+          <div class="login-btn-row">
+            <button type="submit" class="login-btn">Login</button>
+            <button type="button" id="signup-btn" class="signup-btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <!-- Add more nav links here -->
+      </nav>
+      <h1>Unemployed Final Boss</h1>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>Unemployed Final Boss</h2>
+        <p>Press the button to find your next job adventure!</p>
+        <button id="find-job-btn" class="pulse">Find a Job</button>
+      </section>
+
+      <section id="job-results-section">
+        <h3>Job Results</h3>
+        <div id="job-results"></div>
+      </section>
+
+
+      <section id="api-info">
+        <h2>About & API Info</h2>
+        <p>This site uses the <a href="https://arbeitnow.com/api/job-board-api" target="_blank">Arbeitnow Job Board API</a> to fetch real job listings. Click the button above to see jobs!</p>
+        <p>Built for the <strong>Hot</strong> level: Interactive Data-Driven Site.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Blaze</p>
+    </footer>
+    <div></div>
+    <script src="app.js"></script>
+  </body>
+</html>
